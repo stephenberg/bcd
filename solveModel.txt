@@ -1,0 +1,30 @@
+template<typename XMatrix>
+std::vector<Eigen::MatrixXd> solveModel(Model<XMatrix>* model, int nLambda_, double lambdaMinRatio_, bool useLambda_, Eigen::VectorXd lambda_,bool useWeights_){
+  
+  Eigen::VectorXd lambda;
+  if (useLambda_){
+    lambda=lambda_;
+    nLambda_=lambda.size();
+  }
+  else{
+    model->solveUnpenalized();
+    lambda=model->model.computeLambdaPath(nLambda_,lambdaMinRatio_);
+  }
+  
+  Eigen::VectorXd deviance;
+  deviance.setZero(nLambda_);
+  
+  std::vector<Eigen::MatrixXd> betaMat;
+  for (int i=0;i<nLambda_;i++){
+    Rcout<<i<<std::endl;
+    model->solve(lambda(i));
+    deviance(i)=model->computeDeviance();
+    betaMat.push_back(model->getBeta(true));
+  }
+  betaMat.push_back(lambda);
+  betaMat.push_back(deviance);
+  if (useWeights_){
+    betaMat.push_back(model->model.sampleWeights);
+  }
+  return(betaMat);
+}

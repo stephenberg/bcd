@@ -1,0 +1,39 @@
+---
+title: "Quadratic majorization"
+author: "Stephen Berg"
+date: "June 6, 2017"
+output: pdf_document
+---
+
+**Setup**
+
+Hessian $H_{p\times p}$
+
+gradient at $\beta=0$: ${g_0}_{p\times 1}$
+
+penalty parameter $\lambda$
+
+starting value $\beta_0\neq 0$
+
+**Problem**
+
+minimize $g_0^T\beta+\frac{1}{2}\beta^TH\beta+\lambda||\beta||_2$
+
+Note for $x_0,x_1>0$, $$\sqrt{x_1}\geq \sqrt{x_0}+\frac{x_1-x_0}{2\sqrt{x_0}}=\frac{x_1}{\sqrt{x_0}}+\text{constant}$$
+
+So minimizing $g_0^T\beta+\frac{1}{2}\beta^TH\beta+\frac{\lambda}{2}\cdot\frac{||\beta||_2^2}{||\beta_0||_2}$ drives the original problem toward a better value.
+
+Thus we can solve
+
+$$g_0+\left(H+\frac{\lambda}{||\beta_0||_2} I\right)\beta=0$$
+
+--->$$\beta_{new}=-\left(H+\frac{\lambda}{||\beta_0||_2} I\right)^{-1}g_0$$
+
+**Multinomial bound**
+
+$$Q(\eta)\geq const.+-l'(\eta_0)\cdot(\eta-\eta_0)+\frac{\tau}{2}(\eta-\eta_0)^T(\eta-\eta_0)$$
+
+$$=const.+-(Y-\mu)^TX(\beta-\beta_0)+\frac{\tau}{2}(\beta-\beta_0)^TX^TX(\beta-\beta_0)$$
+
+
+$$=const.+\frac{1}{2}\|X(\beta-\beta_0)-X^T(Y-\mu)\|_2^2$$

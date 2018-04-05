@@ -1,0 +1,11 @@
+---
+title: "qrnotes"
+author: "Stephen Berg"
+date: "June 2, 2017"
+output: pdf_document
+---
+
+$X_0=U_0R_0$
+$W_k=U_0U_0^TX_k$
+
+$||W_k(W_k^TW_k)^{-1}W_k^Tr||=||X_k^TU_0U_0^T(X_k^TU_0U_0^TU_0U_0^TX_k)^{-1}X_k^TU_0U_0^Tr||=||X_k^TU_0U_0^T(X_k^TU_0U_0^TX_k)^{-1}X_k^TU_0U_0^Tr||$
