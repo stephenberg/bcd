@@ -6,6 +6,6 @@ Date: 2017-05-26
 Author: Who wrote it
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
-License: What license is it under?
+License: MIT
 Imports: Rcpp (>= 0.12.10), RcppEigen (>= 0.3.2.9.1)
 LinkingTo: Rcpp, RcppEigen
