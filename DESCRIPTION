@@ -1,10 +1,10 @@
 Package: bcd
 Type: Package
-Title: What the package does (short line)
+Title: Block coordinate descent for group lasso
 Version: 1.0
 Date: 2017-05-26
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Author: Stephen Berg
+Maintainer: <saberg2@wisc.edu>
 Description: More about what it does (maybe more than one line)
 License: MIT
 Imports: Rcpp (>= 0.12.10), RcppEigen (>= 0.3.2.9.1)
