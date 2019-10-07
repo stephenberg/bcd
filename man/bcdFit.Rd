@@ -46,10 +46,14 @@ bcdFit(X, y, k = 1, family = c("gaussian", "multinomial", "poisson",
 
 \item{devTol}{tolerance for deviance}
 }
+\value{
+model fit
+}
 \description{
 Fits a model by block coordinate descent
 }
 \examples{
 #no example
+
 
 }

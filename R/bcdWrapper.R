@@ -19,8 +19,12 @@
 #' @param rescale force columns to have norm 1 after orthogonalization (defaults to TRUE)
 #' @param useDevTol use deviance tolerance
 #' @param devTol tolerance for deviance 
+#' 
+#' @return model fit
+#' 
 #' @examples
 #' #no example
+#' 
 #'
 #' @export
 bcdFit<-function(X,
