@@ -9,3 +9,5 @@ Description: More about what it does (maybe more than one line)
 License: MIT
 Imports: Rcpp (>= 0.12.10), RcppEigen (>= 0.3.2.9.1)
 LinkingTo: Rcpp, RcppEigen
+RoxygenNote: 6.1.1
+Encoding: UTF-8
