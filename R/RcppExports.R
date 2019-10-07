@@ -2,26 +2,26 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 multiResponseGaussianDense <- function(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, boundConstant_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_) {
-    .Call('bcd_multiResponseGaussianDense', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, boundConstant_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
+    .Call('_bcd_multiResponseGaussianDense', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, boundConstant_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
 }
 
 multiResponseGaussianSparse <- function(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, boundConstant_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_) {
-    .Call('bcd_multiResponseGaussianSparse', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, boundConstant_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
+    .Call('_bcd_multiResponseGaussianSparse', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, boundConstant_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
 }
 
 multinomialDense <- function(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_) {
-    .Call('bcd_multinomialDense', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
+    .Call('_bcd_multinomialDense', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
 }
 
 multinomialSparse <- function(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_) {
-    .Call('bcd_multinomialSparse', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
+    .Call('_bcd_multinomialSparse', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, k_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, useDevTol_, devTol_)
 }
 
 poissonDense <- function(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_) {
-    .Call('bcd_poissonDense', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_)
+    .Call('_bcd_poissonDense', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_)
 }
 
 poissonSparse <- function(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_) {
-    .Call('bcd_poissonSparse', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_)
+    .Call('_bcd_poissonSparse', PACKAGE = 'bcd', nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_)
 }
 

@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // multiResponseGaussianDense
 Rcpp::List multiResponseGaussianDense(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::MatrixXd X_, double boundConstant_, int k_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, bool useDevTol_, double devTol_);
-RcppExport SEXP bcd_multiResponseGaussianDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP boundConstant_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
+RcppExport SEXP _bcd_multiResponseGaussianDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP boundConstant_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -39,7 +39,7 @@ END_RCPP
 }
 // multiResponseGaussianSparse
 Rcpp::List multiResponseGaussianSparse(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::SparseMatrix<double> X_, double boundConstant_, int k_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, bool useDevTol_, double devTol_);
-RcppExport SEXP bcd_multiResponseGaussianSparse(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP boundConstant_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
+RcppExport SEXP _bcd_multiResponseGaussianSparse(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP boundConstant_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -70,7 +70,7 @@ END_RCPP
 }
 // multinomialDense
 Rcpp::List multinomialDense(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::MatrixXd X_, int k_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, bool useDevTol_, double devTol_);
-RcppExport SEXP bcd_multinomialDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
+RcppExport SEXP _bcd_multinomialDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -100,7 +100,7 @@ END_RCPP
 }
 // multinomialSparse
 Rcpp::List multinomialSparse(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::SparseMatrix<double> X_, int k_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, bool useDevTol_, double devTol_);
-RcppExport SEXP bcd_multinomialSparse(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
+RcppExport SEXP _bcd_multinomialSparse(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -130,7 +130,7 @@ END_RCPP
 }
 // poissonDense
 Rcpp::List poissonDense(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::MatrixXd X_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, Eigen::MatrixXd offset_, bool useDevTol_, double devTol_);
-RcppExport SEXP bcd_poissonDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP offset_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
+RcppExport SEXP _bcd_poissonDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP offset_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -160,7 +160,7 @@ END_RCPP
 }
 // poissonSparse
 Rcpp::List poissonSparse(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::SparseMatrix<double> X_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, Eigen::MatrixXd offset_, bool useDevTol_, double devTol_);
-RcppExport SEXP bcd_poissonSparse(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP offset_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
+RcppExport SEXP _bcd_poissonSparse(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP offset_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -187,4 +187,19 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(poissonSparse(nGroups_, groupStart_, groupEnd_, groupColumns_, tol_, penaltyFactor_, maxit_, response_, X_, nLambda_, lambdaMinRatio_, eigenValueTolerance_, scale_, useLambda_, lambda_, useWeights_, sampleWeights_, offset_, useDevTol_, devTol_));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_bcd_multiResponseGaussianDense", (DL_FUNC) &_bcd_multiResponseGaussianDense, 21},
+    {"_bcd_multiResponseGaussianSparse", (DL_FUNC) &_bcd_multiResponseGaussianSparse, 21},
+    {"_bcd_multinomialDense", (DL_FUNC) &_bcd_multinomialDense, 20},
+    {"_bcd_multinomialSparse", (DL_FUNC) &_bcd_multinomialSparse, 20},
+    {"_bcd_poissonDense", (DL_FUNC) &_bcd_poissonDense, 20},
+    {"_bcd_poissonSparse", (DL_FUNC) &_bcd_poissonSparse, 20},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_bcd(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
