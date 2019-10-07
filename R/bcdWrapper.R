@@ -1,3 +1,28 @@
+#' Fit model by block coordinate descent
+#'
+#' Fits a model by block coordinate descent
+#'
+#' @param X design matrix
+#' @param y response vector (or matrix)
+#' @param k number of response categories (multinomial) or dimension of response matrix (Gaussian)
+#' @param family type of regression: one of "gaussian", "multinomial", "poisson", or "logistic"
+#' @param groups list containing the group index of each column
+#' @param penaltyFactor vector containing penalty level for each group
+#' @param lambda penalty vector for model fitting
+#' @param lambdaMinRatio value to use for lambdaMin/lambdaMax (defaults to 0.0001)
+#' @param nLambda number of lambda values to use
+#' @param sampleWeights different weights for each sample
+#' @param maxit maximum number of coordinate descent iterations (default 100000)
+#' @param tolerance solution tolerance (default 10^-12)
+#' @param offset offset to use for Poisson regression
+#' @param eigenValueTolerance tolerance for deciding whether columns in a group are linearly independent (default 10^-9)
+#' @param rescale force columns to have norm 1 after orthogonalization (defaults to TRUE)
+#' @param useDevTol use deviance tolerance
+#' @param devTol tolerance for deviance 
+#' @examples
+#' #no example
+#'
+#' @export
 bcdFit<-function(X,
                  y,
                  k=1,
@@ -11,7 +36,6 @@ bcdFit<-function(X,
                  maxit=100000,
                  tolerance=10^-12,
                  offset=NULL,
-                 latent=FALSE,
                  eigenValueTolerance=10^-9,
                  rescale=TRUE,
                  useDevTol=TRUE,
