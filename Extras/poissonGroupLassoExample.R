@@ -47,7 +47,7 @@ fitSparse0=bcdFit(X=Matrix(X,sparse=TRUE),y=response,k=1,family="poisson",groups
 fitSparse1=bcdFit(X=Matrix(X,sparse=TRUE),y=response,k=1,family="poisson",groups=groups,penaltyFactor = penaltyFactor,sampleWeights = rep(1,n),offset=rep(0,n),lambdaMinRatio = 0.05)
 
 #fitting with grpreg for comparison purposes
-fitgrpreg=grpreg(X[,2:dim(X)[2]],response,group=c(rep(1,4),rep(2,10),rep(3,5),rep(4,2),rep(5,3),rep(6,5)),family="poisson",lambda.min=0.05,lambda=fitDense0$lambda*sqrt(n))
+fitgrpreg=grpreg(X[,2:dim(X)[2]],response,group=c(rep(1,4),rep(2,10),rep(3,5),rep(4,2),rep(5,3),rep(6,5)),family="poisson",lambda.min=0.05,eps=10^-12,lambda=fitDense0$lambda*sqrt(n))
 ng=dim(fitgrpreg$beta)[2]
 max(abs(unlist(fitDense0$beta[1:ng])-c(fitgrpreg$beta)))
 max(abs(unlist(fitDense1$beta[1:ng])-c(fitgrpreg$beta)))

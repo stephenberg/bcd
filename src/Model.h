@@ -318,8 +318,6 @@ Rcpp::List solveModel(Model<XMatrix>* outerModel, int nLambda_, double lambdaMin
   }
   else{
     lambda=outerModel->model.computeLambdaPath(nLambda_,lambdaMinRatio_);
-    Rcout<<"Test"<<std::endl;
-    Rcout<<lambda<<std::endl;
   }
   
   Eigen::VectorXd deviance;

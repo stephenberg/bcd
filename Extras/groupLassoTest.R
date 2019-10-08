@@ -52,12 +52,12 @@ test=NULL
 testDense=NULL
 testSparse=NULL
 lambdaMinRatio=grpregFit$lambda[nLambda]/grpregFit$lambda[1]
-testDense<-bcdFit(X=X,
+testDense<-fit_bcd(X=X,
                   y=response,
                   penaltyFactor = penaltyFactor,
                   groups=groups)
-microbenchmark(testDense<-bcdFit(X=X,y=response,penaltyFactor=penaltyFactor,groups=groups,tolerance = 10^-12,lambdaMinRatio=lambdaMinRatio,nLambda = nLambda,devTol = 0.99),times=1)
-microbenchmark(testSparse<-bcdFit(X=Matrix(X,sparse=TRUE),y=response,penaltyFactor=penaltyFactor,groups=groups,tolerance = 10^-12,lambdaMinRatio=lambdaMinRatio,nLambda = nLambda),times=1)
+microbenchmark(testDense<-fit_bcd(X=X,y=response,penaltyFactor=penaltyFactor,groups=groups,tolerance = 10^-12,lambdaMinRatio=lambdaMinRatio,nLambda = nLambda,devTol = 0.99),times=1)
+microbenchmark(testSparse<-fit_bcd(X=Matrix(X,sparse=TRUE),y=response,penaltyFactor=penaltyFactor,groups=groups,tolerance = 10^-12,lambdaMinRatio=lambdaMinRatio,nLambda = nLambda),times=1)
 
 betaMatFromList<-function(test,n){
   res=NULL
@@ -82,4 +82,6 @@ print(max(abs(diffsGrpReg[])))
 print(max(abs(diffsGlmnet[])))
 print(max(abs(diffsGrpNet)))
 
+grpregFit$lambda[1]/testDense$lambda[1]
+sqrt(n)
 

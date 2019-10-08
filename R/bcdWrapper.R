@@ -4,7 +4,6 @@
 #'
 #' @param X design matrix
 #' @param y response vector (or matrix)
-#' @param k number of response categories (multinomial) or dimension of response matrix (Gaussian)
 #' @param family type of regression: one of "gaussian", "multinomial", "poisson", or "logistic"
 #' @param groups list containing the group index of each column
 #' @param penaltyFactor vector containing penalty level for each group
@@ -17,21 +16,35 @@
 #' @param offset offset to use for Poisson regression
 #' @param eigenValueTolerance tolerance for deciding whether columns in a group are linearly independent (default 10^-9)
 #' @param rescale force columns to have norm 1 after orthogonalization (defaults to TRUE)
-#' @param useDevTol use deviance tolerance
-#' @param devTol tolerance for deviance 
+#' @param useDevTol use deviance tolerance to stop solving after deviance is reduced by devTol
+#' @param devTol tolerance for deviance reduction before model fitting is stopped
 #' 
 #' @return model fit
 #' 
 #' @examples
-#' #no example
+#' data(exampleData)
 #' 
-#'
+#' #Linear regression
+#' fit_linear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
+#' 
+#' #Logistic regression
+#' fit_logistic=fit_bcd(X=X,y=y_binary,family="logistic",groups=grouping,penaltyFactor=penaltyFactor)
+#' 
+#' #Multinomial regression
+#' fit_multinomial=fit_bcd(X=X,y=as.factor(y_multinomial),family="logistic",groups=grouping,penaltyFactor=penaltyFactor)
+#' 
+#' #Multiresponse linear regression
+#' fit_multirespone=fit_bcd(X=X,y=y_multiresponse,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
+#' 
+#' #Logistic regression with overlapping groups and implicit duplication of design matrix columns
+#' grouping=list(as.integer(1),2:10,11:30,11:50)
+#' fit_overlap=fit_bcd(X=X,y=y_binary,family="logistic",groups=grouping,penaltyFactor=penaltyFactor)
+#' 
 #' @export
 #' @useDynLib bcd
 #' @importFrom Rcpp sourceCpp
-bcdFit<-function(X,
+fit_bcd<-function(X,
                  y,
-                 k=1,
                  family = c("gaussian", "multinomial", "poisson", "logistic"),
                  groups,
                  penaltyFactor,
@@ -50,11 +63,19 @@ bcdFit<-function(X,
 
   family <- match.arg(family)
   
+  k=NULL
+  
   if ((!is.list(groups)) | (length(groups)<1)){
     stop("groups must be a list containing vectors of integers")
   }
   if (!is.integer(unlist(groups))){
-    stop("the entries in each group must be integers between 1 and the number of columns in X")
+    stop("The entries in each group must be of integer type.")
+  }
+  if ((min(unlist(groups))<1) | (max(unlist(groups))>dim(X)[2])){
+    stop("The entries in each group must be between 1 and the number of columns in X.")
+  }
+  if (length(penaltyFactor)!=length(groups)){
+    stop("The penaltyFactor vector must have the same length as the groups list.")
   }
 
   sparse=FALSE
@@ -127,6 +148,7 @@ bcdFit<-function(X,
 
   if (family=="gaussian"){
     if (is.vector(y)){
+      k=1
       if (length(y)==dim(X)[1]){
         y=matrix(y)
       }
@@ -138,9 +160,10 @@ bcdFit<-function(X,
       if (dim(y)[1]!=dim(X)[1]){
         stop("y must have the same number of rows as X")
       }
-      if (dim(y)[2]!=k){
-        stop("for the multiresponse Gaussian, y must have k columns")
-      }
+      k=dim(y)[2]
+    }
+    if (k>1){
+      cat(paste("Fitting multiresponse Gaussian model with k=",k,sep=""))
     }
     result=NULL
     if (!sparse){
@@ -193,8 +216,9 @@ bcdFit<-function(X,
   if (family=="multinomial" | family=="logistic"){
     response=NULL
     if (is.factor(y)){
-      if (length(unique(y))!=k){
-        stop("number of levels in y must equal k.")
+      k=length(unique(y))
+      if (k==1){
+        stop("Response must have more than 1 level.")
       }
       if (length(y)!=(dim(X))[1]){
         stop("length of y must equal number of rows in X")
@@ -209,18 +233,14 @@ bcdFit<-function(X,
       }
     }
     if (is.vector(y)){
-      if (k!=2){
-        stop("if the response is given as a non-factor-type vector, k must equal 2.")
-      }
+      k=2
       if (any(y<0)|any(y>1)){
         stop("all responses must be between 0 and 1")
       }
-      response=c(1-y,y)
+      response=cbind(1-y,y)
     }
     if (is.matrix(y)){
-      if (dim(y)[2]!=k){
-        stop("the dimension of y not equal to k")
-      }
+      k=dim(y)[2]
       if (dim(y)[1]!=dim(X)[1]){
         stop("the number of rows in y must equal the number of rows in X.")
       }
@@ -281,10 +301,13 @@ bcdFit<-function(X,
     }
   }
   if (family=="poisson"){
-    if (k!=1){
-      stop("k must equal 1 for poisson regression")
-    }
+    k=1
     if (!is.vector(y)){
+      if (is.matrix(y)){
+        if (dim(y)[2]>1){
+          stop("y must be a length n vector or a n-by-1 matrix")
+        }
+      }
       if (!is.matrix(y)){
         stop("y must be a length n vector or a n-by-1 matrix.")
       }

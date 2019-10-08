@@ -377,12 +377,9 @@ public:
   //get lambda value that gets rid of penalized coefficients
   //assumes the unpenalized coefficients have been optimized and the rest are zero
   double computeMaxLambda(){
-    Rcout<<"max lambda computation"<<std::endl;
-    Rcout<<"resids="<<resids<<std::endl;
     
     double maxLambda=0;
     for (int p_group=0;p_group<groups.nGroup;p_group++){
-      Rcout<<"Penalty factor="<<groups.penaltyFactor(p_group)<<std::endl;
       if (groups.penaltyFactor(p_group)>0){
         xtr(p_group,resids);
         double tempLambda=computeGroupNorm(p_group,gradient)/groups.penaltyFactor(p_group);
@@ -485,6 +482,7 @@ public:
     SelfAdjointEigenSolver<MatrixXd> test(crossProd);
     Eigen::VectorXd eigenValues=test.eigenvalues();
     Eigen::MatrixXd eigenVectors=test.eigenvectors();
+    double maxEigenvalue=eigenValues.array().maxCoeff();
     
     //compute projected rank
     ColPivHouseholderQR<MatrixXd> rankMat(crossProd);
@@ -492,8 +490,9 @@ public:
     
     Eigen::MatrixXd eigenTransformMat;
     eigenTransformMat.setZero(length,length);
+    bool collinear=false;
     for (int j=0; j<length;j++){
-      if (eigenValues(j)>eigenValueTolerance){
+      if ((eigenValues(j)/maxEigenvalue)>eigenValueTolerance){
         if (scale){
           eigenTransformMat.col(j)=pow(eigenValues(j),-0.5)*eigenVectors.col(j);
         }
@@ -502,8 +501,11 @@ public:
         }
       }
       else{
-        Rcout<<"Collinearity in group "<<(p_group+1)<<" after projecting out unpenalized groups."<<std::endl;
+        collinear=true;
       }
+    }
+    if (collinear){
+      Rcout<<"Collinearity in group "<<(p_group+1)<<" after projecting out unpenalized groups."<<std::endl;
     }
     if ((p_group==groups.unpenalizedIndex)){
       R1R1t=eigenTransformMat*eigenTransformMat.adjoint();
