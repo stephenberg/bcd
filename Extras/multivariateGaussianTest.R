@@ -47,9 +47,8 @@
 # fitglmnet$lambda[1]
 # max(lambda)
 # max(lambda2)
-# #t=multiResponseGaussianDense(nGroups_ = p,groupStart,groupEnd,groupColumns,10^-9,c(0,rep(1,p-1)),10000,y,X,1,k,length(fitglmnet$lambda))
+# t=multiResponseGaussianDense(nGroups_ = p,groupStart,groupEnd,groupColumns,10^-9,c(0,rep(1,p-1)),10000,y,X,1,k,length(fitglmnet$lambda))
 # 
-# #
-# # microbenchmark(multiResponseGaussianDense(nGroups_ = p,groupStart,groupEnd,groupColumns,10^-9,rep(1,p),10000,y,X,1,k,length(fitglmnet$lambda))
-# # ,times=1)
-# # microbenchmark(glmnet(x=X,y=y,family="mgaussian",intercept=FALSE,standardize = TRUE,thresh = 10^-9),times=1)
+# microbenchmark(multiResponseGaussianDense(nGroups_ = p,groupStart,groupEnd,groupColumns,10^-9,rep(1,p),10000,y,X,1,k,length(fitglmnet$lambda))
+# ,times=1)
+# microbenchmark(glmnet(x=X,y=y,family="mgaussian",intercept=FALSE,standardize = TRUE,thresh = 10^-9),times=1)

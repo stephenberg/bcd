@@ -27,6 +27,8 @@
 #' 
 #'
 #' @export
+#' @useDynLib bcd
+#' @importFrom Rcpp sourceCpp
 bcdFit<-function(X,
                  y,
                  k=1,

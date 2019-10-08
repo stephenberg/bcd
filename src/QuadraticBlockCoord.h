@@ -147,7 +147,7 @@ public:
     interceptComputed=false;
     unpenalizedSetUp();
     setRInverseList();
-    // updateResiduals();
+    updateResiduals();
   }
   
   //constructor
@@ -377,8 +377,12 @@ public:
   //get lambda value that gets rid of penalized coefficients
   //assumes the unpenalized coefficients have been optimized and the rest are zero
   double computeMaxLambda(){
+    Rcout<<"max lambda computation"<<std::endl;
+    Rcout<<"resids="<<resids<<std::endl;
+    
     double maxLambda=0;
     for (int p_group=0;p_group<groups.nGroup;p_group++){
+      Rcout<<"Penalty factor="<<groups.penaltyFactor(p_group)<<std::endl;
       if (groups.penaltyFactor(p_group)>0){
         xtr(p_group,resids);
         double tempLambda=computeGroupNorm(p_group,gradient)/groups.penaltyFactor(p_group);

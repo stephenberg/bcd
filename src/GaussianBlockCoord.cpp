@@ -27,7 +27,6 @@ Rcpp::List multiResponseGaussianDense(int nGroups_
                                                           ,double devTol_){
   int p_=X_.cols();
   int n_=X_.rows();
-  
   Model<Eigen::MatrixXd>* quadModel;
   
   if (!useWeights_){
