@@ -5,7 +5,7 @@ Version: 1.0
 Date: 2017-05-26
 Author: Stephen Berg
 Maintainer: <saberg2@wisc.edu>
-Description: Package fits GLMs with group lasso penalty by coordinate descent. Implemented in C++ via Rcpp.
+Description: Package fits common GLMs with group lasso penalty by coordinate descent. Implemented in C++ via Rcpp. Capable of fitting models with overlapping groups (with implicit rather than explicit duplication of the design matrix columns for memory saving). Can also fit sparse group lasso type models using the overlapping group lasso framework. 
 License: GPL-3
 Imports: Rcpp (>= 0.12.10), RcppEigen (>= 0.3.2.9.1)
 LinkingTo: Rcpp, RcppEigen
