@@ -45,7 +45,7 @@ fit_bcd(X, y, family = c("gaussian", "multinomial", "poisson",
 \item{devTol}{tolerance for deviance reduction before model fitting is stopped}
 }
 \value{
-model fit
+model fit object
 }
 \description{
 Fits a model by block coordinate descent

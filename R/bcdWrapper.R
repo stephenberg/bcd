@@ -19,7 +19,7 @@
 #' @param useDevTol use deviance tolerance to stop solving after deviance is reduced by devTol
 #' @param devTol tolerance for deviance reduction before model fitting is stopped
 #' 
-#' @return model fit
+#' @return model fit object
 #' 
 #' @examples
 #' data(exampleData)

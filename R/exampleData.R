@@ -8,6 +8,7 @@
 # p=50
 # k=3
 # X=matrix(rnorm(n*p),ncol=p)
+# X[,1]=rep(1,n)
 # beta=rnorm(p)/sqrt(p)
 # beta_multiresponse=matrix(rnorm(p*k),ncol=k)/(sqrt(p*k))
 # 

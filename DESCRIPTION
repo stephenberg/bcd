@@ -13,3 +13,4 @@ RoxygenNote: 6.1.1
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 LazyData: true
+Suggests: testthat (>= 2.1.0), glmnet (>= 2.0-18), grpreg (>= 3.2-1)
