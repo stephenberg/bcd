@@ -26,4 +26,5 @@
 # 
 # grouping=list(1:1,c(2:10),11:30,31:50)
 # penaltyFactor=c(0,1,1,1)
-# save(n,p,k,X,beta,beta_multiresponse,y_gaussian,y_count,y_binary,y_multinomial,y_multiresponse,penaltyFactor,grouping,file = "data/exampleData.RData")
+# sampleWeights=runif(n)
+# save(n,p,k,X,beta,beta_multiresponse,y_gaussian,y_count,y_binary,y_multinomial,y_multiresponse,penaltyFactor,grouping,sampleWeights,file = "data/exampleData.RData")

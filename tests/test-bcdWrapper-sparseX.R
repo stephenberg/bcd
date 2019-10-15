@@ -4,15 +4,9 @@ library(glmnet)
 library(grpreg)
 data("exampleData")
 data("referenceCoefficients")
+X=Matrix(X,sparse=TRUE)
 
 #####Linear
-test_that("Linear regression vs. grpreg", {
-  fitLinear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
-  fitGrpreg=grpreg::grpreg(X=X[,-1],y=y_gaussian,family="gaussian",group=c(rep(1,9),rep(2,20),rep(3,20)),eps = 10^-16)
-  betaBCD=matrix(unlist(fitLinear$beta),ncol=length(fitLinear$beta))
-  expect_equal(betaBCD,matrix(fitGrpreg$beta,ncol=100),tol=10^-8)
-})
-
 test_that("Linear regression vs. reference from working version", {
   fitLinear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
   for (i in 1:length(fitLinear$beta)){
@@ -63,16 +57,6 @@ test_that("Linear regression with varying sample weights vs. glmnet", {
 })
 
 #####Logistic
-test_that("Logistic regression vs. grpreg", {
-  fitLogistic=fit_bcd(X=X,y=y_binary,family="logistic",groups=grouping,penaltyFactor=penaltyFactor)
-  fitGrpreg=grpreg(X=X[,-1],y=y_binary,family="binomial",group=c(rep(1,9),rep(2,20),rep(3,20)),eps = 10^-12)
-  betaBCD=matrix(0,length(fitLogistic$beta[[1]][,1]),ncol(fitGrpreg$beta))
-  for (i in 1:ncol(fitGrpreg$beta)){
-    betaBCD[,i]=fitLogistic$beta[[i]][,2]-fitLogistic$beta[[i]][,1]
-  }
-  expect_equal(betaBCD[,1:ncol(fitGrpreg$beta)],matrix(fitGrpreg$beta,ncol=ncol(fitGrpreg$beta)),tol=10^-7)
-})
-
 test_that("Logistic regression vs. reference from working version", {
   fitLogistic=fit_bcd(X=X,y=y_binary,family="logistic",groups=grouping,penaltyFactor=penaltyFactor)
   for (i in 1:length(fitLogistic)){
@@ -144,8 +128,8 @@ test_that("Multinomial regression vs. glmnet", {
 
 test_that("Multinomial regression with varying sample weights vs. glmnet", {
   fitMultinomial=fit_bcd(X=X,y=as.factor(y_multinomial),family="multinomial",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_multinomial,family="multinomial",thresh=10^-20,weights = sampleWeights,type.multinomial="grouped")
-  fitGlmnet=glmnet(x=X[,-1],y=y_multinomial,family="multinomial",lambda=fitMultinomial$lambda*fitGlmnet$lambda[1]/fitMultinomial$lambda[1],thresh=10^-20,weights=sampleWeights,type.multinomial="grouped")
+  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",thresh=10^-20,weights = sampleWeights,type.multinomial="grouped")
+  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",lambda=fitMultinomial$lambda*fitGlmnet$lambda[1]/fitMultinomial$lambda[1],thresh=10^-20,weights=sampleWeights,type.multinomial="grouped")
   for (i in 1:length(fitMultinomial$beta)){
     b1=fitMultinomial$beta[[i]]
     b2=NULL
@@ -167,19 +151,6 @@ test_that("Poisson regression vs. glmnet", {
     b1=fitPoisson$beta[[i]]
     b2=coefficients(fitGlmnet)[,i]
     expect_equal(matrix(b1,ncol=1),matrix(b2,ncol=1),tol=10^-10)
-  }
-})
-
-test_that("Poisson regression vs. grpreg", {
-  #grpreg seems to be a bit off
-  #using a higher tolerance for this test
-  fitPoisson=fit_bcd(X=X,y=y_count,family="poisson",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)))
-  fitGrpreg=grpreg(X=X[,-1],y=y_count,family="poisson",eps = 10^-15)
-  
-  for (i in 1:dim(fitGrpreg$beta)[2]){
-    b1=fitPoisson$beta[[i]]
-    b2=fitGrpreg$beta[,i]
-    expect_equal(matrix(b1,ncol=1),matrix(b2,ncol=1),tol=10^-3)
   }
 })
 

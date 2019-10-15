@@ -128,8 +128,11 @@ fit_bcd<-function(X,
     if (!is.vector(sampleWeights)){
       stop("sampleWeights, if supplied, must be a vector with length the number of rows in X")
     }
-    if (any(sampleWeights<0)){
+    if (any(sampleWeights<=0)){
       stop("all entries in sampleWeights must be >=0.")
+    }
+    if (length(sampleWeights)<nrow(X)){
+      stop("sampleWeights must have length nrow(X)")
     }
   }
   if (is.null(sampleWeights)){

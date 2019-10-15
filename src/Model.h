@@ -228,17 +228,23 @@ public:
   //solve unpenalized problem
   //basically irls for the unpenalized covariates
   int solveUnpenalized(){
+    // Rcout<<"outer solve unpenalized residuals = "<<model.resids.block(0,0,10,1)<<std::endl;
     bool converged;
     int iterations;
     for (iterations=0;iterations<maxitOuter;iterations++){
+      //Rcout<<"beta = "<<model.beta<<std::endl;
       model.updateLinearPredictorFromResiduals();
+      //Rcout<<"linear predictor = "<<model.linPred<<std::endl;
       computeWorkingResponse();
       model.setResponse(workingResponse);
       model.updateResiduals();
       beta_prev_outer=model.beta;
       model.solveUnpenalized();
       beta_outer=model.beta;
+      //Rcout<<"beta = "<<model.beta<<std::endl;
       converged=checkConverged();
+      // Rcout<<"outer solveUnpenalized()"<<std::endl;
+      // Rcout<<"outer converged = "<<converged<<std::endl;
       if (converged){
         model.updateLinearPredictorFromResiduals();
         computeWorkingResponse();

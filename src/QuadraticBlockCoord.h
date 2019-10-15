@@ -215,7 +215,10 @@ public:
     sampleWeights=(sampleWeights/sampleWeights.array().sum())*sampleWeightsSum;
     setRInverseList();
     updateResiduals();
-    boundConstant=boundConstant_*sampleWeights.maxCoeff();
+
+    //boundConstant=boundConstant_*sampleWeights.maxCoeff();
+    boundConstant=boundConstant_;
+    //Rcout<<"Initial residuals = "<<resids.block(0,0,10,1)<<std::endl;
   }
   
   //compute t(X)%*%(y-mu)
@@ -225,6 +228,9 @@ public:
     for (int p1=0;p1<groupLength;p1++){
       int XIndex=groups.getColumn(p_group,p1);
       grad_p.block(p1,0,1,k)=X.col(XIndex).adjoint()*(residsVec);
+      // if (XIndex==0){
+      //   Rcout<<"xtr = "<<X.col(XIndex).adjoint()*(residsVec)<<std::endl;
+      // }
     }
     grad_p=RInverseListProjected[p_group].adjoint()*grad_p;
     
@@ -663,22 +669,28 @@ public:
   
   //update unpenalized groups only
   void updateUnpenalizedGroups(){
+    // Rcout<<"before"<<std::endl;
+    // Rcout<<"beta = "<<beta<<std::endl;
     if (groups.anyUnpenalized){
       bool isActive=(active.groupVector(groups.unpenalizedIndex)!=0);
+      // Rcout<<"before xtr resids = "<<resids.block(0,0,10,1)<<std::endl;
       updateGroup(groups.unpenalizedIndex,0,isActive);
     }
+    // Rcout<<"after"<<std::endl;
+    // Rcout<<"beta = "<<beta<<std::endl;
   }
   
   //solve unpenalized
   int solveUnpenalized(){
+    // Rcout<<"solveUnpenalized inner resids = "<<resids.block(0,0,10,1)<<std::endl;
     converged=false;
     int iterations=0;
-    
     while (!converged && iterations<maxit){
       //the group update will check convergence
       //if the convergence check fails, converged will be set to false
       converged=true;
       updateUnpenalizedGroups();
+      // Rcout<<converged<<std::endl;
       iterations++;
     }
     return(iterations);
