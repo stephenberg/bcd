@@ -4,7 +4,7 @@
 #' first column and numeric values in the remaining columns. 
 #' Used in tests and examples
 #'
-#' @format A matrix with 53940 rows and 10 variables:
+#' @format A 1000 by 50 matrix
 "X"
 
 #' True coefficients for tests
