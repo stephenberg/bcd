@@ -53,6 +53,8 @@ The tests use the example data that comes with the package:
 
 ```
 library(bcd)
+library(glmnet)
+library(grpreg)
 data(exampleData)
 ```
 
@@ -60,7 +62,7 @@ Testing linear regression vs. **grpreg**, with 3 groups and an unpenalized inter
 
 ```
 fitBCD=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
-fitGrpreg=grpreg::grpreg(X=X[,-1],y=y_gaussian,family="gaussian",group=c(rep(1,9),rep(2,20),rep(3,20)),eps = 10^-16)
+fitGrpreg=grpreg(X=X[,-1],y=y_gaussian,family="gaussian",group=c(rep(1,9),rep(2,20),rep(3,20)),eps = 10^-16)
 betaBCD=matrix(unlist(fitBCD$beta),ncol=length(fitBCD$beta))
 max(abs(betaBCD-fitGrpreg$beta))
 ```

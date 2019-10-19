@@ -8,7 +8,7 @@ data("referenceCoefficients")
 #####Linear
 test_that("Linear regression vs. grpreg", {
   fitLinear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
-  fitGrpreg=grpreg::grpreg(X=X[,-1],y=y_gaussian,family="gaussian",group=c(rep(1,9),rep(2,20),rep(3,20)),eps = 10^-16)
+  fitGrpreg=grpreg(X=X[,-1],y=y_gaussian,family="gaussian",group=c(rep(1,9),rep(2,20),rep(3,20)),eps = 10^-16)
   betaBCD=matrix(unlist(fitLinear$beta),ncol=length(fitLinear$beta))
   expect_equal(betaBCD,matrix(fitGrpreg$beta,ncol=100),tol=10^-8)
 })
