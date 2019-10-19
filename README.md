@@ -56,7 +56,7 @@ library(bcd)
 data(exampleData)
 ```
 
-For linear regression, vs. **grpreg**, with 3 groups and an unpenalized intercept:
+Testing linear regression vs. **grpreg**, with 3 groups and an unpenalized intercept:
 
 ```
 fitBCD=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor)
@@ -66,12 +66,12 @@ max(abs(betaBCD-fitGrpreg$beta))
 ```
 [1] 4.468648e-15
 
-For linear regression, vs. **glmnet**, with lasso (*l*<sub>1</sub>) penalty only
+Testing linear regression vs. **glmnet**, with lasso (*l*<sub>1</sub>) penalty only
 
 ```
-  fitBCD=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),tol=10^-12)
-  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitBCD$lambda*sqrt(n),thresh=10^-30)
-  betaBCD=matrix(unlist(fitBCD$beta),ncol=length(fitBCD$beta))
+fitBCD=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),tol=10^-12)
+fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitBCD$lambda*sqrt(n),thresh=10^-30)
+betaBCD=matrix(unlist(fitBCD$beta),ncol=length(fitBCD$beta))
 max(abs(betaBCD-coefficients(fitGlmnet)))
 ```
 [1] 2.250804e-15
