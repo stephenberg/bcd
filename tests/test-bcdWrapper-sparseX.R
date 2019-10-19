@@ -31,7 +31,7 @@ test_that("Linear regression with varying sample weights", {
 test_that("Linear regression without sample weights vs. glmnet", {
   fitLinear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),tol=10^-12)
   fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",thresh=10^-30)
-  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitLinear$lambda*fitGlmnet$lambda[1]/fitLinear$lambda[1],thresh=10^-30)
+  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitLinear$lambda*sqrt(n),thresh=10^-30)
   for (i in 1:length(fitLinear$beta)){
     expect_equal(as.numeric(fitLinear$beta[[i]]),as.numeric(coefficients(fitGlmnet)[,i]))
   }
@@ -40,7 +40,7 @@ test_that("Linear regression without sample weights vs. glmnet", {
 test_that("Linear regression with sample weights rep(1,n) vs. glmnet", {
   fitLinear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),tol=10^-12,sampleWeights = rep(1,n))
   fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",thresh=10^-30)
-  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitLinear$lambda*fitGlmnet$lambda[1]/fitLinear$lambda[1],thresh=10^-30)
+  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitLinear$lambda*sqrt(n),thresh=10^-30)
   for (i in 1:length(fitLinear$beta)){
     expect_equal(as.numeric(fitLinear$beta[[i]]),as.numeric(coefficients(fitGlmnet)[,i]))
   }
@@ -50,7 +50,7 @@ test_that("Linear regression with sample weights rep(1,n) vs. glmnet", {
 test_that("Linear regression with varying sample weights vs. glmnet", {
   fitLinear=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights,tol=10^-12)
   fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",thresh=10^-30,weights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitLinear$lambda*fitGlmnet$lambda[1]/fitLinear$lambda[1],thresh=10^-30,weights=sampleWeights)
+  fitGlmnet=glmnet(x=X[,-1],y=y_gaussian,family="gaussian",lambda=fitLinear$lambda*sqrt(n),thresh=10^-30,weights=sampleWeights)
   for (i in 1:length(fitLinear$beta)){
     expect_equal(as.numeric(fitLinear$beta[[i]]),as.numeric(coefficients(fitGlmnet)[,i]))
   }
@@ -81,7 +81,7 @@ test_that("Logistic regression with varying sample weights", {
 test_that("Logistic regression with varying sample weights vs. glmnet", {
   fitLogistic=fit_bcd(X=X,y=y_binary,family="logistic",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights)
   fitGlmnet=glmnet(x=X[,-1],y=y_binary,family="binomial",thresh=10^-30,weights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_binary,family="binomial",lambda=fitLogistic$lambda*fitGlmnet$lambda[1]/fitLogistic$lambda[1],thresh=10^-30,weights=sampleWeights)
+  fitGlmnet=glmnet(x=X[,-1],y=y_binary,family="binomial",lambda=fitLogistic$lambda*sqrt(n),thresh=10^-30,weights=sampleWeights)
   for (i in 1:length(fitLogistic$beta)){
     betaLogistic=fitLogistic$beta[[i]][,2]-fitLogistic$beta[[i]][,1]
     betaGlmnet=as.numeric(coefficients(fitGlmnet)[,i])
@@ -113,8 +113,7 @@ test_that("Multinomial regression with varying weights", {
 
 test_that("Multinomial regression vs. glmnet", {
   fitMultinomial=fit_bcd(X=X,y=as.factor(y_multinomial),family="multinomial",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)))
-  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",thresh=10^-20,type.multinomial="grouped")
-  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",lambda=fitMultinomial$lambda*fitGlmnet$lambda[1]/fitMultinomial$lambda[1],thresh=10^-20,type.multinomial="grouped")
+  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",lambda=fitMultinomial$lambda*sqrt(k*n),thresh=10^-20,type.multinomial="grouped")
   for (i in 1:length(fitMultinomial$beta)){
     b1=fitMultinomial$beta[[i]]
     b2=NULL
@@ -128,8 +127,7 @@ test_that("Multinomial regression vs. glmnet", {
 
 test_that("Multinomial regression with varying sample weights vs. glmnet", {
   fitMultinomial=fit_bcd(X=X,y=as.factor(y_multinomial),family="multinomial",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",thresh=10^-20,weights = sampleWeights,type.multinomial="grouped")
-  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",lambda=fitMultinomial$lambda*fitGlmnet$lambda[1]/fitMultinomial$lambda[1],thresh=10^-20,weights=sampleWeights,type.multinomial="grouped")
+  fitGlmnet=glmnet(x=X[,-1],y=as.factor(y_multinomial),family="multinomial",lambda=fitMultinomial$lambda*sqrt(k*n),thresh=10^-20,weights=sampleWeights,type.multinomial="grouped")
   for (i in 1:length(fitMultinomial$beta)){
     b1=fitMultinomial$beta[[i]]
     b2=NULL
@@ -145,8 +143,7 @@ test_that("Multinomial regression with varying sample weights vs. glmnet", {
 #####Poisson
 test_that("Poisson regression vs. glmnet", {
   fitPoisson=fit_bcd(X=X,y=y_count,family="poisson",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),tol=10^-14)
-  fitGlmnet=glmnet(x=X[,-1],y=y_count,family="poisson",thresh=10^-30)
-  fitGlmnet=glmnet(x=X[,-1],y=y_count,family="poisson",lambda=fitPoisson$lambda*fitGlmnet$lambda[1]/fitPoisson$lambda[1],thresh=10^-30)
+  fitGlmnet=glmnet(x=X[,-1],y=y_count,family="poisson",lambda=fitPoisson$lambda*sqrt(n),thresh=10^-30)
   for (i in 1:length(fitPoisson$beta)){
     b1=fitPoisson$beta[[i]]
     b2=coefficients(fitGlmnet)[,i]
@@ -177,8 +174,7 @@ test_that("Poisson regression vs. reference with varying sample weights", {
 
 test_that("Poisson regression vs. glmnet with varying sample weights", {
   fitPoisson=fit_bcd(X=X,y=y_count,family="poisson",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_count,family="poisson",thresh=10^-30,weights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_count,family="poisson",lambda=fitPoisson$lambda*fitGlmnet$lambda[1]/fitPoisson$lambda[1],thresh=10^-30,weights=sampleWeights)
+  fitGlmnet=glmnet(x=X[,-1],y=y_count,family="poisson",lambda=fitPoisson$lambda*sqrt(n),thresh=10^-30,weights=sampleWeights)
   for (i in 1:length(fitPoisson)){
     expect_equal(as.numeric(fitPoisson$beta[[i]]),as.numeric(coefficients(fitGlmnet)[,i]),tol=10^-12)
   }
@@ -188,8 +184,7 @@ test_that("Poisson regression vs. glmnet with varying sample weights", {
 #####Multiresponse linear
 test_that("Multiresponse linear vs. glmnet", {
   fitMultiresponse=fit_bcd(X=X,y=y_multiresponse,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)))
-  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",thresh=10^-30)
-  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",lambda=fitMultiresponse$lambda*fitGlmnet$lambda[1]/fitMultiresponse$lambda[1],thresh=10^-30)
+  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",lambda=fitMultiresponse$lambda*sqrt(k*n),thresh=10^-30)
   for (i in 1:length(fitMultiresponse$beta)){
     b1=fitMultiresponse$beta[[i]]
     b2=NULL
@@ -203,8 +198,7 @@ test_that("Multiresponse linear vs. glmnet", {
 
 test_that("Multiresponse linear with sample weights vs. glmnet", {
   fitMultiresponse=fit_bcd(X=X,y=y_multiresponse,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",thresh=10^-30,weights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",lambda=fitMultiresponse$lambda*fitGlmnet$lambda[1]/fitMultiresponse$lambda[1],thresh=10^-30,weights=sampleWeights)
+  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",lambda=fitMultiresponse$lambda*sqrt(k*n),thresh=10^-30,weights=sampleWeights)
   for (i in 1:length(fitMultiresponse$beta)){
     b1=fitMultiresponse$beta[[i]]
     b2=NULL
