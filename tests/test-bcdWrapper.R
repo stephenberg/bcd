@@ -223,7 +223,7 @@ test_that("Multiresponse linear vs. glmnet", {
 
 test_that("Multiresponse linear with sample weights vs. glmnet", {
   fitMultiresponse=fit_bcd(X=X,y=y_multiresponse,family="gaussian",groups=as.list(1:50),penaltyFactor=c(0,rep(1,49)),sampleWeights = sampleWeights)
-  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",lambda=fitMultiresponse$lambda*sqrt(),thresh=10^-30,weights=sampleWeights)
+  fitGlmnet=glmnet(x=X[,-1],y=y_multiresponse,family="mgaussian",lambda=fitMultiresponse$lambda*sqrt(k*n),thresh=10^-30,weights=sampleWeights)
   for (i in 1:length(fitMultiresponse$beta)){
     b1=fitMultiresponse$beta[[i]]
     b2=NULL
