@@ -1,5 +1,4 @@
-# bcd
-Block coordinate descent for group lasso
+# bcd: block coordinate descent for group lasso problems
 
 ### Description
 
