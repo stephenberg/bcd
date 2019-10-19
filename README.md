@@ -15,7 +15,7 @@ Features:
   * overlapping group lasso penalization
   * models with 1 or more than 1 unpenalized coefficient
   * models with 0 unpenalized coefficients, including models where the intercept is penalized or the model does not contain an intercept
-  * varying weights for each sample
+* varying weights for each sample
   
 ### Installation
 
