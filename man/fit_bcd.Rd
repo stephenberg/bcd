@@ -77,8 +77,8 @@ fit_overlap=fit_bcd(X=X,y=y_binary,family="logistic",groups=grouping,penaltyFact
 grouping=c(list(as.integer(1),2:10,11:30,11:50),as.list(2:50))
 penaltyFactor=c(0,rep(0.5,3),rep(0.5,49))
 
-#fitting is slow unless a relaxed optimization tolerance is used
-fit_sgl=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor,tol=10^-5)
+#using a larger lambdaMinRatio to decrease fitting time
+fit_sgl=fit_bcd(X=X,y=y_gaussian,family="gaussian",groups=grouping,penaltyFactor=penaltyFactor,lambdaMinRatio=0.05)
 
 
 }
