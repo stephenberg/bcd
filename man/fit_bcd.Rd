@@ -4,12 +4,24 @@
 \alias{fit_bcd}
 \title{Fit model by block coordinate descent}
 \usage{
-fit_bcd(X, y, family = c("gaussian", "multinomial", "poisson",
-  "logistic"), groups, penaltyFactor, lambda = NULL,
-  lambdaMinRatio = 1e-04, nLambda = 100, sampleWeights = NULL,
-  maxit = 1e+05, tolerance = 10^-12, offset = NULL,
-  eigenValueTolerance = 10^-9, rescale = TRUE, useDevTol = TRUE,
-  devTol = 0.9)
+fit_bcd(
+  X,
+  y,
+  family = c("gaussian", "multinomial", "poisson", "logistic"),
+  groups,
+  penaltyFactor,
+  lambda = NULL,
+  lambdaMinRatio = 1e-04,
+  nLambda = 100,
+  sampleWeights = NULL,
+  maxit = 1e+05,
+  tolerance = 10^-12,
+  offset = NULL,
+  eigenValueTolerance = 10^-9,
+  rescale = TRUE,
+  useDevTol = TRUE,
+  devTol = 0.9
+)
 }
 \arguments{
 \item{X}{design matrix}

@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // multiResponseGaussianDense
 Rcpp::List multiResponseGaussianDense(int nGroups_, Eigen::VectorXi groupStart_, Eigen::VectorXi groupEnd_, Eigen::VectorXi groupColumns_, double tol_, Eigen::VectorXd penaltyFactor_, int maxit_, Eigen::MatrixXd response_, Eigen::MatrixXd X_, double boundConstant_, int k_, int nLambda_, double lambdaMinRatio_, double eigenValueTolerance_, bool scale_, bool useLambda_, Eigen::VectorXd lambda_, bool useWeights_, Eigen::VectorXd sampleWeights_, bool useDevTol_, double devTol_);
 RcppExport SEXP _bcd_multiResponseGaussianDense(SEXP nGroups_SEXP, SEXP groupStart_SEXP, SEXP groupEnd_SEXP, SEXP groupColumns_SEXP, SEXP tol_SEXP, SEXP penaltyFactor_SEXP, SEXP maxit_SEXP, SEXP response_SEXP, SEXP X_SEXP, SEXP boundConstant_SEXP, SEXP k_SEXP, SEXP nLambda_SEXP, SEXP lambdaMinRatio_SEXP, SEXP eigenValueTolerance_SEXP, SEXP scale_SEXP, SEXP useLambda_SEXP, SEXP lambda_SEXP, SEXP useWeights_SEXP, SEXP sampleWeights_SEXP, SEXP useDevTol_SEXP, SEXP devTol_SEXP) {

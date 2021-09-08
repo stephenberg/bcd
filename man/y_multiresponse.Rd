@@ -4,7 +4,9 @@
 \name{y_multiresponse}
 \alias{y_multiresponse}
 \title{Multiresponse Gaussian response matrix}
-\format{1000 by 3 numeric matrix}
+\format{
+1000 by 3 numeric matrix
+}
 \usage{
 y_multiresponse
 }

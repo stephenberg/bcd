@@ -4,7 +4,9 @@
 \name{sampleWeights}
 \alias{sampleWeights}
 \title{Sample weights}
-\format{Length 1000 numeric vector}
+\format{
+Length 1000 numeric vector
+}
 \usage{
 sampleWeights
 }

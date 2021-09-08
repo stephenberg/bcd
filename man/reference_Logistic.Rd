@@ -4,7 +4,9 @@
 \name{reference_Logistic}
 \alias{reference_Logistic}
 \title{Logistic regression reference coefficients}
-\format{Length 100 list of 50 by 2 numeric matrices}
+\format{
+Length 100 list of 50 by 2 numeric matrices
+}
 \usage{
 reference_Logistic
 }

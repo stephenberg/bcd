@@ -4,7 +4,9 @@
 \name{penaltyFactor}
 \alias{penaltyFactor}
 \title{penaltyFactor}
-\format{Length 4 numeric vector}
+\format{
+Length 4 numeric vector
+}
 \usage{
 penaltyFactor
 }

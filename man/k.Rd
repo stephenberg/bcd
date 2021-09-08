@@ -4,7 +4,9 @@
 \name{k}
 \alias{k}
 \title{Number of categories for multiresponse examples}
-\format{integer}
+\format{
+integer
+}
 \usage{
 k
 }

@@ -4,7 +4,9 @@
 \name{y_binary}
 \alias{y_binary}
 \title{Binary response vector}
-\format{Length 1000 integer vector}
+\format{
+Length 1000 integer vector
+}
 \usage{
 y_binary
 }

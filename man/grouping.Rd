@@ -4,7 +4,9 @@
 \name{grouping}
 \alias{grouping}
 \title{Grouping used for the example tests}
-\format{Length 4 list of integer vectors.}
+\format{
+Length 4 list of integer vectors.
+}
 \usage{
 grouping
 }

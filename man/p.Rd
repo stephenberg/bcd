@@ -4,7 +4,9 @@
 \name{p}
 \alias{p}
 \title{Number of predictors in examples}
-\format{integer}
+\format{
+integer
+}
 \usage{
 p
 }

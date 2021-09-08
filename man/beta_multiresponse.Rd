@@ -4,7 +4,9 @@
 \name{beta_multiresponse}
 \alias{beta_multiresponse}
 \title{True coefficients for multiresponse tests}
-\format{50 by 3 numeric matrix}
+\format{
+50 by 3 numeric matrix
+}
 \usage{
 beta_multiresponse
 }

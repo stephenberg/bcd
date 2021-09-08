@@ -4,7 +4,9 @@
 \name{reference_Poisson_Weighted}
 \alias{reference_Poisson_Weighted}
 \title{Poisson regression reference coefficients}
-\format{Length 100 list of 50 by 1 numeric matrices}
+\format{
+Length 100 list of 50 by 1 numeric matrices
+}
 \usage{
 reference_Poisson_Weighted
 }

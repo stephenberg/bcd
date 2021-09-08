@@ -4,7 +4,9 @@
 \name{beta}
 \alias{beta}
 \title{True coefficients for tests}
-\format{Length 50 numeric vector}
+\format{
+Length 50 numeric vector
+}
 \usage{
 beta
 }

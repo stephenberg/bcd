@@ -4,7 +4,9 @@
 \name{y_gaussian}
 \alias{y_gaussian}
 \title{Gaussian response vector}
-\format{Length 1000 numeric vector}
+\format{
+Length 1000 numeric vector
+}
 \usage{
 y_gaussian
 }

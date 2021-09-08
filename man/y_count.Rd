@@ -4,7 +4,9 @@
 \name{y_count}
 \alias{y_count}
 \title{Poisson response vector}
-\format{Length 1000 numeric vector}
+\format{
+Length 1000 numeric vector
+}
 \usage{
 y_count
 }

@@ -4,7 +4,9 @@
 \name{reference_Multinomial}
 \alias{reference_Multinomial}
 \title{Multinomial regression reference coefficients}
-\format{Length 100 list of 50 by 3 numeric matrices}
+\format{
+Length 100 list of 50 by 3 numeric matrices
+}
 \usage{
 reference_Multinomial
 }

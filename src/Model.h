@@ -128,12 +128,6 @@ public:
     beta_outer=beta_prev_outer;
   }
   
-  
-  //return solution path
-  Eigen::MatrixXd getBetaMat(){
-    return(betaMat);
-  }
-  
   //given linear predictor values in model and response, set working response
   void computeWorkingResponse(){
     workingResponse.setZero(model.n,model.k);

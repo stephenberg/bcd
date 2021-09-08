@@ -4,7 +4,9 @@
 \name{reference_Multiresponse}
 \alias{reference_Multiresponse}
 \title{Multiresponse Gaussian reference coefficients}
-\format{Length 100 list of 50 by 3 numeric matrices}
+\format{
+Length 100 list of 50 by 3 numeric matrices
+}
 \usage{
 reference_Multiresponse
 }

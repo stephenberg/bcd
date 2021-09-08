@@ -4,7 +4,9 @@
 \name{n}
 \alias{n}
 \title{Number of samples in examples}
-\format{integer}
+\format{
+integer
+}
 \usage{
 n
 }

@@ -4,7 +4,9 @@
 \name{reference_Linear_Weighted}
 \alias{reference_Linear_Weighted}
 \title{Linear regression reference coefficients}
-\format{Length 100 list of 50 by 1 numeric matrices}
+\format{
+Length 100 list of 50 by 1 numeric matrices
+}
 \usage{
 reference_Linear_Weighted
 }

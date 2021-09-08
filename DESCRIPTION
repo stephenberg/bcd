@@ -9,7 +9,7 @@ Description: Package fits common GLMs with group lasso penalty by coordinate des
 License: GPL-3
 Imports: Rcpp (>= 0.12.10), RcppEigen (>= 0.3.2.9.1)
 LinkingTo: Rcpp, RcppEigen
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 LazyData: true

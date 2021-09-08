@@ -4,7 +4,9 @@
 \name{X}
 \alias{X}
 \title{Design matrix for tests and examples}
-\format{A 1000 by 50 matrix}
+\format{
+A 1000 by 50 matrix
+}
 \usage{
 X
 }

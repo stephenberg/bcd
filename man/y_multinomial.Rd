@@ -4,7 +4,9 @@
 \name{y_multinomial}
 \alias{y_multinomial}
 \title{Multinomial response example}
-\format{Length 1000 numeric vector}
+\format{
+Length 1000 numeric vector
+}
 \usage{
 y_multinomial
 }
