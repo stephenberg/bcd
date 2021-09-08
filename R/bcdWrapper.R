@@ -98,7 +98,7 @@ fit_bcd<-function(X,
   }
 
   sparse=FALSE
-  if (class(X)!="matrix" & class(X)!="dgeMatrix"){
+  if ((!is.matrix(X)) & (class(X)!="dgeMatrix")){
     if (class(X)=="dgCMatrix"){
       sparse=TRUE
     }
